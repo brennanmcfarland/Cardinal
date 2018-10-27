@@ -1,4 +1,5 @@
 import configparser
+import datetime
 from cardinal.weather import weather_info
 from cardinal.news import news_headlines
 
@@ -17,6 +18,12 @@ def get_news_headlines():
     print(news_headlines(news_api))
 
 
+def get_local_time():
+    now = datetime.datetime.now()
+    print(now.strftime("%A, %d of %B, %Y\n"))
+
+
 if __name__ == '__main__':
     get_weather_info()
     get_news_headlines()
+    get_local_time()

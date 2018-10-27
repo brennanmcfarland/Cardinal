@@ -27,9 +27,9 @@ def __parse_titles(response, number=5):
 def news_headlines(news_api):
     headlines = __parse_titles(__get_headlines(news_api))
 
-    output = "Here are the current news headlines.\n\n"
+    output = "Here are the current news headlines.\n"
     for headline in headlines:
-        output += (headline + '\n')
+        output += (' -' + headline + '\n')
 
     return output
 
