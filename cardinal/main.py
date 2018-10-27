@@ -2,6 +2,7 @@ import configparser
 import datetime
 from cardinal.weather import weather_info
 from cardinal.news import news_headlines
+from cardinal.wikipedia import get_wikipedia_page_for_topic
 
 config = configparser.ConfigParser()
 config.read('api.ini')  # not in the git repo
@@ -27,3 +28,4 @@ if __name__ == '__main__':
     get_weather_info()
     get_news_headlines()
     get_local_time()
+    get_wikipedia_page_for_topic('Dallas')
