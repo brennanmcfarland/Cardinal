@@ -1,5 +1,5 @@
 import configparser
-from cardinal.weather import get_weather_in_city
+from cardinal.weather import weather_info
 
 if __name__ == '__main__':
     config = configparser.ConfigParser()
@@ -7,4 +7,4 @@ if __name__ == '__main__':
 
     owm_api = config.get('API', 'OWM')
 
-    print(get_weather_in_city('London', owm_api))
+    print(weather_info('Dallas', owm_api))
