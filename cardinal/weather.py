@@ -33,5 +33,5 @@ def weather_info(city, owm_api):
     weather_info_dict = __get_weather_in_city(city, owm_api)
 
     return (f"The weather in {city} is {weather_info_dict['conditions']}, "
-            f"with a temperature of {weather_info_dict['temperature']}")
+            f"with a temperature of {weather_info_dict['temperature']}\n")
 
