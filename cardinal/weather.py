@@ -1,6 +1,6 @@
 import requests
 
-WEATHER_URL = 'api.openweathermap.org/data/2.5/weather'
+WEATHER_URL = 'http://api.openweathermap.org/data/2.5/weather'
 
 
 def get_weather_in_city(city, owm_api):
