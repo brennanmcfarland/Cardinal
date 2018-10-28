@@ -68,6 +68,7 @@ if __name__ == '__main__':
         sys.exit(1)
 
     if output is not None:    # not wikipedia
-        text_to_speech(output, tts_api)
         print(output)
+        text_to_speech(output, tts_api)
+
 
