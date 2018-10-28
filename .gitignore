@@ -5,4 +5,6 @@ venv/
 ENV/
 env.bak/
 venv.bak/
+msspeechservices*
 api.ini
+SpeechRecognition*.json
