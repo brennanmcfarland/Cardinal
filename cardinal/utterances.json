@@ -1,0 +1,18 @@
+[
+  {
+    "text": "go to Seattle today",
+    "intentName": "test",
+    "entityLabels": [
+      {
+        "entityName": "SpecificTestObject",
+        "startCharIndex": 6,
+        "endCharIndex": 12
+      }
+    ]
+  },
+  {
+    "text": "purple dogs are difficult to work with",
+    "intentName": "test",
+    "entityLabels": []
+  }
+]
