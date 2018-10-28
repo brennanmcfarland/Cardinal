@@ -2,6 +2,7 @@ import io
 import subprocess
 
 import requests
+<<<<<<< HEAD
 import soundfile as sf
 import sounddevice as sd
 import configparser
@@ -12,11 +13,21 @@ import simpleaudio as sa
 from pydub import AudioSegment
 import numpy as np
 from scipy.signal import resample
+=======
+import vlc
+import configparser
+from mutagen.mp3 import MP3
+import time
+>>>>>>> audio-output
 
 
 config = configparser.ConfigParser()
 config.read('api.ini')
 msspeech_api = config.get('API', 'SPEECH')
+<<<<<<< HEAD
+=======
+
+>>>>>>> audio-output
 
 TOKEN_URL = 'https://westus.api.cognitive.microsoft.com/sts/v1.0/issueToken'
 WEB_URL = 'https://westus.tts.speech.microsoft.com/cognitiveservices/v1'
@@ -66,8 +77,20 @@ def __save_audio_file(response):
 
 
 def text_to_speech(text, api_key):
+<<<<<<< HEAD
     __save_audio_file(__send_output_text(text, __get_token(api_key)))
 
 
 if __name__ == '__main__':
     text_to_speech("This is a test of the text to speech", msspeech_api)
+=======
+    filename = __save_audio_file(__send_output_text(text, __get_token(api_key)))
+    audio = MP3(filename)
+    player = vlc.MediaPlayer(filename)
+    player.play()
+    time.sleep(audio.info.length)
+
+
+if __name__ == '__main__':
+    text_to_speech("This is a test", msspeech_api)
+>>>>>>> audio-output

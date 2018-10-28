@@ -2,3 +2,5 @@ requests
 sounddevice
 scipy
 numpy
+mutagen
+python-vlc
