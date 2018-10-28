@@ -31,5 +31,5 @@ def news_headlines(news_api):
     for headline in headlines:
         output += (' -' + headline + '\n')
 
-    return output
+    output += 'Headlines powered by News API\n'
 
