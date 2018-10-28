@@ -1,6 +1,8 @@
 import requests
 import sys
 import webbrowser
+from bs4 import BeautifulSoup
+import urllib.request as urllib
 
 WIKI_URL = 'https://en.wikipedia.org/w/api.php'
 
@@ -48,4 +50,18 @@ def __open_wikipedia_url(full_url):
 
 
 def get_wikipedia_page_for_topic(topic):
-    __open_wikipedia_url(__get_wikipedia_page_url(topic))
+    wikipedia_url = __get_wikipedia_page_url(topic)
+    __open_wikipedia_url(wikipedia_url)
+    return get_wikipedia_page_blurb(wikipedia_url)
+
+
+def get_wikipedia_page_blurb(url):
+    html = urllib.urlopen(url)
+    soup = BeautifulSoup(html, 'html.parser')
+    blurb = soup.find('div', class_='mw-parser-output').p.find_next("p").get_text()
+    blurb = blurb.split('.')[0]
+    return blurb
+
+
+if __name__ == '__main__':
+    get_wikipedia_page_for_topic('green. ')

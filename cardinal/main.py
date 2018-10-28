@@ -57,8 +57,7 @@ if __name__ == '__main__':
     if intent == 'weather':
         output = get_weather_info(intent_json['entities'][0]['entity'])
     elif intent == 'wikipedia':
-        get_wikipedia_page(intent_json['entities'][0]['entity'])
-        sys.exit(0)
+        output = get_wikipedia_page(intent_json['entities'][0]['entity'])
     elif intent == 'time':
         output = get_local_time()
     elif intent == 'news':
