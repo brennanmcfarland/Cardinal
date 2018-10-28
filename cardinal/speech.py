@@ -6,6 +6,7 @@ import requests
 import scipy.io.wavfile as wavfile
 import io
 import json
+import os
 
 # TODO: tune the amplitude values
 
@@ -51,6 +52,7 @@ if __name__ == '__main__':
     query_params = {'language': 'en-US'}
     response = requests.post(msspeechurl, params=query_params, headers=headers, data=wav)
 
+    os.remove('sound.wav')
     # INTERPRET THE RESPONSE
     print(response.text)
     response = json.loads(response.text)
