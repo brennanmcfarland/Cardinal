@@ -4,8 +4,8 @@
 ![Cardinal](https://d1ia71hq4oe7pn.cloudfront.net/photo/63667311-720px.jpg)
 
 Cardinal receives user input via the device's microphone, and transforms the _speech to text_ using the __Microsoft Azure 
-Cognitive Services Platform__. With the sample sentences we have trained, Cardinal can detect the intent of a message -
-the service being requested - and the entity to perform the service upon where relevant.
+Cognitive Services Platform__. Cardinal can detect the intent of a message - the service being requested - 
+and the entity to perform the service upon where relevant.
 
 After the service code is executed, the text output is then sent back to the Cognitive Services Platform to request a 
 _text to speech_ result from the Azure. Cardinal downloads the response .mp3 and plays back the audio.
@@ -55,7 +55,7 @@ Headlines powered by News API
 
 Getting the weather conditions of a city:
 ```
-User speaks: 'How cold is it in Dalals?'
+User speaks: 'How cold is it in Dallas?'
 
 ...
 
