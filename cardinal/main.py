@@ -11,12 +11,16 @@ owm_api = config.get('API', 'OWM')
 news_api = config.get('API', 'NEWS')
 
 
-def get_weather_info():
-    print(weather_info('Dallas', owm_api))
+def get_weather_info(city):
+    print(weather_info(city, owm_api))
 
 
 def get_news_headlines():
     print(news_headlines(news_api))
+
+
+def get_wikipedia_page(topic):
+    print(get_wikipedia_page_for_topic(topic))
 
 
 def get_local_time():
