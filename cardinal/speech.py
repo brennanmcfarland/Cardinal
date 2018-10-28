@@ -17,7 +17,7 @@ msspeech_api = config.get('API', 'SPEECH')
 luis_api = config.get('API', 'INTENT')
 
 
-if __name__ == '__main__':
+def get_command():
     # 1. GET THE AUDIO
     fs = 44100
     duration = 3  # seconds
@@ -64,3 +64,5 @@ if __name__ == '__main__':
         exit()
 
 
+if __name__ == '__main__':
+    get_command()
