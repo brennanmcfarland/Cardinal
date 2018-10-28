@@ -39,7 +39,7 @@ def __send_output_text(text, token):
 
     xml = (first_xml_line + second_xml_line + third_xml_line + fourth_xml_line)
 
-    return requests.post(WEB_URL, data=xml, headers=headers)
+    return requests.post(WEB_URL, data=xml.encode('utf-8'), headers=headers)
 
 
 def __save_audio_file(response):

@@ -1,12 +1,12 @@
 import configparser
 import datetime
 import sys
-from cardinal.weather import weather_info
-from cardinal.news import news_headlines
-from cardinal.wikipedia import get_wikipedia_page_for_topic
-from cardinal.speech import get_command
-from cardinal.intent import get_intent_from_text
-from cardinal.voice import text_to_speech
+from weather import weather_info
+from news import news_headlines
+from wikipedia import get_wikipedia_page_for_topic
+from speech import get_command
+from intent import get_intent_from_text
+from voice import text_to_speech
 
 config = configparser.ConfigParser()
 config.read('api.ini')  # not in the git repo
@@ -25,12 +25,27 @@ def get_news_headlines():
 
 
 def get_wikipedia_page(topic):
-    return get_wikipedia_page_for_topic(topic)
+    get_wikipedia_page_for_topic(topic)
 
 
 def get_local_time():
     now = datetime.datetime.now()
-    return now.strftime("%A, %d of %B, %Y\n")
+    time_int = int(now.strftime('%H'))
+    if time_int < 12:
+        merid = 'AM'
+
+        if time_int == 0:  # 12am
+            hour = '12'
+        else:
+            hour = now.strftime('%H')
+    else:
+        merid = 'PM'
+        if time_int - 12 == 0:  # 12pm
+            hour = '12'
+        else:
+            hour = str(time_int - 12)
+
+    return now.strftime(f"The time is {hour}:%M {merid}, on %A, %d of %B, %Y\n")
 
 
 if __name__ == '__main__':
@@ -42,7 +57,8 @@ if __name__ == '__main__':
     if intent == 'weather':
         output = get_weather_info(intent_json['entities'][0]['entity'])
     elif intent == 'wikipedia':
-        output = get_wikipedia_page(intent_json['entities'][0]['entity'])
+        get_wikipedia_page(intent_json['entities'][0]['entity'])
+        sys.exit(0)
     elif intent == 'time':
         output = get_local_time()
     elif intent == 'news':
@@ -51,4 +67,7 @@ if __name__ == '__main__':
         print('Unknown intent, exiting')
         sys.exit(1)
 
-    text_to_speech(output, tts_api)
+    if output is not None:    # not wikipedia
+        text_to_speech(output, tts_api)
+        print(output)
+

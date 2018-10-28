@@ -1,4 +1,7 @@
 init:
-    pip install -r requirements.txt
+	pip install -r requirements.txt
 
-.PHONY: init test
+run:
+	python3 cardinal/main.py
+
+.PHONY: init run
