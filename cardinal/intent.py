@@ -1,5 +1,6 @@
 import configparser
 import requests
+import warnings
 
 config = configparser.ConfigParser()
 config.read('api.ini')
@@ -8,6 +9,7 @@ luis_api = config.get('API', 'INTENT')
 luis_utterances = config.get('API', 'UTTERANCES')
 luisurl = 'https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/' + luis_utterances
 headers = { 'Ocp-Apim-Subscription-Key': luis_api}
+warnings.filterwarnings("ignore")     # dangerous
 
 
 def get_intent_from_text(recognized_text):
@@ -18,7 +20,7 @@ def get_intent_from_text(recognized_text):
         'spellCheck': 'false',
         'staging': 'false' }
     response = requests.get(luisurl, headers=headers, params=query_params)
-    print(response.text)
+    # print(response.text)
     return response.json()
 
 

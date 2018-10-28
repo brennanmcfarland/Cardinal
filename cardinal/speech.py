@@ -6,7 +6,6 @@ import requests
 import scipy.io.wavfile as wavfile
 import io
 import json
-import os
 
 # TODO: tune the amplitude values
 
@@ -30,7 +29,7 @@ def get_command():
     sd.wait()
 
     print("Processing Audio")
-    print(recording.shape)
+    # print(recording.shape)
 
     recording = [sum(r) / len(r) for r in recording]
     recording = resample(recording, 16000 * duration)
@@ -39,12 +38,12 @@ def get_command():
     recording = np.clip(recording, -32768, 32767)
     recording = recording.astype('int16')
     print("Resampled Audio")
-    print(recording.shape)
+    # print(recording.shape)
     wav = io.BytesIO()
     wavfile.write(wav, 16000, recording)
 
     # 2. PUT IT IN A RESTFUL API REQUEST
-    print("sending REST request...")
+    print("sending REST request...\n")
     msspeechurl = 'https://westus.stt.speech.microsoft.com/speech/recognition/conversation/cognitiveservices/v1?' \
                   'language=en-us'
     headers = {'Ocp-Apim-Subscription-Key': msspeech_api,
@@ -53,7 +52,7 @@ def get_command():
     response = requests.post(msspeechurl, params=query_params, headers=headers, data=wav)
 
     # INTERPRET THE RESPONSE
-    print(response.text)
+    # print(response.text)
     response = json.loads(response.text)
     if response['RecognitionStatus'] == 'Success':
         recognized_text = response['DisplayText']
