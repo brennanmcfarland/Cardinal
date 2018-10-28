@@ -21,8 +21,13 @@ def __wikipedia_page_exists(topic):
         return False
 
     response = response.json()
-    if response['query']['search'][0]['title'].lower() == topic:
-        return True
+
+    try:
+        if response['query']['search'][0]['title'].lower() == topic:
+            return True
+    except IndexError:
+        return False
+
 
 
 def __get_wikipedia_page_url(topic):
