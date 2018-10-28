@@ -1,6 +1,6 @@
 # Cardinal
 
-## Cardinal is a Digital Assistant and Accessibility Tool written in Python. It is also the (cute) state bird of Ohio:
+## Cardinal is a Digital Voice Assistant and Accessibility Tool written in Python. It is also the (cute) state bird of Ohio:
 ![Cardinal](https://d1ia71hq4oe7pn.cloudfront.net/photo/63667311-720px.jpg)
 
 Cardinal receives user input via the device's microphone, and transforms the _speech to text_ using the __Microsoft Azure 
