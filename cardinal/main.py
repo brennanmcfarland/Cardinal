@@ -25,7 +25,7 @@ def get_news_headlines():
 
 
 def get_wikipedia_page(topic):
-    get_wikipedia_page_for_topic(topic)
+    return get_wikipedia_page_for_topic(topic)
 
 
 def get_local_time():
