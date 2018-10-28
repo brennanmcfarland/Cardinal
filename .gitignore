@@ -8,3 +8,4 @@ venv.bak/
 msspeechservices*
 api.ini
 SpeechRecognition*.json
+cardinal/__pycache__/
