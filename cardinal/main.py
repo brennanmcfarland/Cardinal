@@ -37,9 +37,9 @@ if __name__ == '__main__':
     intent = intent_json['topScoringIntent']['intent']
 
     if intent == 'weather':
-        get_weather_info(intent_json['entities'][0])
+        get_weather_info(intent_json['entities'][0]['entity'])
     elif intent == 'wikipedia':
-        get_wikipedia_page(intent_json['entities'][0])
+        get_wikipedia_page(intent_json['entities'][0]['entity'])
     elif intent == 'time':
         get_local_time()
     elif intent == 'news':
