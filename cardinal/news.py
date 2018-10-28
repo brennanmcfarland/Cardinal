@@ -29,7 +29,7 @@ def news_headlines(news_api):
 
     output = "Here are the current news headlines.\n"
     for headline in headlines:
-        output += (' -' + headline + '\n')
+        output += (' - ' + headline + '\n')
 
     return output + 'Headlines powered by News API\n'
 
