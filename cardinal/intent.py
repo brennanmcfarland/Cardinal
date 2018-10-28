@@ -25,4 +25,4 @@ def get_intent_from_text(recognized_text):
 
 
 if __name__ == '__main__':
-    get_intent_from_text("go to New York today")
+    get_intent_from_text("what time is it")
