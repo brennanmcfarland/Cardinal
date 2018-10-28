@@ -1,5 +1,6 @@
 import configparser
 import datetime
+import sys
 from cardinal.weather import weather_info
 from cardinal.news import news_headlines
 from cardinal.wikipedia import get_wikipedia_page_for_topic
@@ -33,17 +34,16 @@ def get_local_time():
 if __name__ == '__main__':
     command_text = get_command()
     intent_json = get_intent_from_text(command_text)
+    intent = intent_json['topScoringIntent']['intent']
 
-    # intent json looks like this:
-    #   'query': execute order 66
-    #   'topScoringIntent': {
-    #       'intent':'str'
-    #       'score':float
-    #    }
-    #   entities: []
-
-
-
-    # get_weather_info()
-    # get_news_headlines()
-    # get_local_time()
+    if intent == 'weather':
+        get_weather_info(intent_json['entities'][0])
+    elif intent == 'wikipedia':
+        get_wikipedia_page(intent_json['entities'][0])
+    elif intent == 'time':
+        get_local_time()
+    elif intent == 'news':
+        get_news_headlines()
+    else:
+        print('Unknown intent, exiting')
+        sys.exit(1)
