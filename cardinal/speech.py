@@ -52,13 +52,13 @@ def get_command():
     query_params = {'language': 'en-US'}
     response = requests.post(msspeechurl, params=query_params, headers=headers, data=wav)
 
-    os.remove('sound.wav')
     # INTERPRET THE RESPONSE
     print(response.text)
     response = json.loads(response.text)
     if response['RecognitionStatus'] == 'Success':
         recognized_text = response['DisplayText']
         print(recognized_text)
+        return recognized_text
     else:
         print('Did not understand command')
         exit()

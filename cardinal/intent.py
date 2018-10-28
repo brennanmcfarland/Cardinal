@@ -18,6 +18,7 @@ def get_intent_from_text(recognized_text):
         'staging': 'false' }
     response = requests.get(luisurl, headers=headers, params=query_params)
     print(response.text)
+    return response.json()
 
 
 if __name__ == '__main__':
