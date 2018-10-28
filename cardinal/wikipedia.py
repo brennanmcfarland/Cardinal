@@ -34,7 +34,7 @@ def __wikipedia_page_exists(topic):
 
 def __get_wikipedia_page_url(topic):
 
-    topic = topic[:-2]
+    # topic = topic[:-2]
     if __wikipedia_page_exists(topic):
         # /w/api.php?action=parse&format=json&page=Pet_door
         response = requests.get(WIKI_URL + '?action=parse&format=json&page=' + topic).json()
