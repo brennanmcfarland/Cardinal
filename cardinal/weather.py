@@ -41,5 +41,5 @@ def weather_info(city, owm_api):
 
     __open_weather_page(weather_info_dict['id'])
     return (f"The weather in {city} is {weather_info_dict['conditions']}, "
-            f"with a temperature of {weather_info_dict['temperature']}\n")
+            f"with a temperature of {weather_info_dict['temperature']} F\n")
 
