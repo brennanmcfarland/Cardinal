@@ -1,4 +1,22 @@
+import io
+import subprocess
+
 import requests
+import soundfile as sf
+import sounddevice as sd
+import configparser
+import wave
+import scipy.io.wavfile as wavfile
+import pyaudio
+import simpleaudio as sa
+from pydub import AudioSegment
+import numpy as np
+from scipy.signal import resample
+
+
+config = configparser.ConfigParser()
+config.read('api.ini')
+msspeech_api = config.get('API', 'SPEECH')
 
 TOKEN_URL = 'https://westus.api.cognitive.microsoft.com/sts/v1.0/issueToken'
 WEB_URL = 'https://westus.tts.speech.microsoft.com/cognitiveservices/v1'
@@ -29,18 +47,27 @@ def __send_output_text(text, token):
 
     xml = (first_xml_line + second_xml_line + third_xml_line + fourth_xml_line)
 
-    return requests.post(WEB_URL, data=xml, headers=headers)
+    return requests.post(WEB_URL, data=xml, headers=headers).text
 
 
 def __save_audio_file(response):
-    local_filename = './voice.wav'
-    with open(local_filename, 'wb') as f:
-        for chunk in response.iter_content(chunk_size=1024):
-            if chunk: # filter out keep-alive new chunks
-                f.write(chunk)
-
-    return local_filename
+    local_filename = './voice.mp3'
+    print(response)
+    recording = np.array(bytearray(response, encoding='UTF-8'))
+    newrecording = []
+    for i in range(0, len(recording), 2):
+        newrecording.append(int((recording[i] * 256) + recording[i+1]))
+    newrecording = np.array(newrecording, dtype='int16')
+    # convert from 16000 to 44100 Hz
+    print(44100 * len(newrecording) / 16000)
+    recording = resample(newrecording, int(44100 * len(newrecording) / 16000))
+    sd.play(newrecording, 44100)
+    sd.wait()
 
 
 def text_to_speech(text, api_key):
     __save_audio_file(__send_output_text(text, __get_token(api_key)))
+
+
+if __name__ == '__main__':
+    text_to_speech("This is a test of the text to speech", msspeech_api)
