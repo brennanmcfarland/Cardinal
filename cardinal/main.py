@@ -1,12 +1,12 @@
 import configparser
 import datetime
 import sys
-from cardinal.weather import weather_info
-from cardinal.news import news_headlines
-from cardinal.wikipedia import get_wikipedia_page_for_topic
-from cardinal.speech import get_command
-from cardinal.intent import get_intent_from_text
-from cardinal.voice import text_to_speech
+from weather import weather_info
+from news import news_headlines
+from wikipedia import get_wikipedia_page_for_topic
+from speech import get_command
+from intent import get_intent_from_text
+from voice import text_to_speech
 
 config = configparser.ConfigParser()
 config.read('api.ini')  # not in the git repo
