@@ -66,14 +66,13 @@ The weather in dallas is Clear, with a temperature of 60.5 F
 
 Searching Wikipedia for Nelson Mandela:
 ```
-User speaks: 'How cold is it in Dalals?'
+User speaks: 'Search Wikipedia for Nelson Mandela?'
 
 ...
 
-The weather in dallas is Clear, with a temperature of 60.5 F
-
-<the webpage for weather in Dallas would be opened in the default browser>
+<the wikipedia webpage for Nelson Mandela would be opened in the default browser>
 ```
+
 
 This project was developed by Brennan McFarland and Emilio Lopez for HackOHI/O 2018. 
 
