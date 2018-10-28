@@ -25,7 +25,7 @@ def get_news_headlines():
 
 
 def get_wikipedia_page(topic):
-    return get_wikipedia_page_for_topic(topic)
+    get_wikipedia_page_for_topic(topic)
 
 
 def get_local_time():
@@ -57,7 +57,8 @@ if __name__ == '__main__':
     if intent == 'weather':
         output = get_weather_info(intent_json['entities'][0]['entity'])
     elif intent == 'wikipedia':
-        output = get_wikipedia_page(intent_json['entities'][0]['entity'])
+        get_wikipedia_page(intent_json['entities'][0]['entity'])
+        sys.exit(0)
     elif intent == 'time':
         output = get_local_time()
     elif intent == 'news':
@@ -66,4 +67,7 @@ if __name__ == '__main__':
         print('Unknown intent, exiting')
         sys.exit(1)
 
-    text_to_speech(output, tts_api)
+    if output is not None:    # not wikipedia
+        text_to_speech(output, tts_api)
+        print(output)
+
