@@ -30,7 +30,22 @@ def get_wikipedia_page(topic):
 
 def get_local_time():
     now = datetime.datetime.now()
-    return now.strftime("%A, %d of %B, %Y\n")
+    time_int = int(now.strftime('%H'))
+    if time_int < 12:
+        merid = 'AM'
+
+        if time_int == 0:  # 12am
+            hour = '12'
+        else:
+            hour = now.strftime('%H')
+    else:
+        merid = 'PM'
+        if time_int - 12 == 0:  # 12pm
+            hour = '12'
+        else:
+            hour = str(time_int - 12)
+
+    return now.strftime(f"The time is {hour}:%M {merid}, on %A, %d of %B, %Y\n")
 
 
 if __name__ == '__main__':
