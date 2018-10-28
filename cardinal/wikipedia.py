@@ -23,7 +23,7 @@ def __wikipedia_page_exists(topic):
     response = response.json()
 
     try:
-        if response['query']['search'][0]['title'].lower() == topic:
+        if response['query']['search'][0]['title'].lower() in topic:
             return True
     except IndexError:
         return False
