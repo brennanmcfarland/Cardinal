@@ -21,17 +21,21 @@ def __wikipedia_page_exists(topic):
         return False
 
     response = response.json()
-    if response['query']['search'][0]['title'] == topic:
+    if response['query']['search'][0]['title'].lower() == topic:
         return True
 
 
 def __get_wikipedia_page_url(topic):
 
+    topic = topic[:-2]
     if __wikipedia_page_exists(topic):
         # /w/api.php?action=parse&format=json&page=Pet_door
         response = requests.get(WIKI_URL + '?action=parse&format=json&page=' + topic).json()
 
         return 'http://en.wikipedia.org/?curid=' + str(response['parse']['pageid'])
+    else:
+        print(topic + ' not found')
+        sys.exit(1)
 
 
 def __open_wikipedia_url(full_url):
