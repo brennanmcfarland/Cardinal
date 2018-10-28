@@ -4,3 +4,4 @@ scipy
 numpy
 mutagen
 python-vlc
+bs4
