@@ -10,3 +10,4 @@ api.ini
 SpeechRecognition*.json
 cardinal/__pycache__/
 luisauthoringkey
+cardinal/voice.wav
