@@ -1,14 +1,14 @@
 # Cardinal
 
-## Cardinal is a Digital Assistant and Accessibility Tool written in Python. It is also the state bird of Ohio:
+## Cardinal is a Digital Assistant and Accessibility Tool written in Python. It is also the (cute) state bird of Ohio:
 ![Cardinal](https://d1ia71hq4oe7pn.cloudfront.net/photo/63667311-720px.jpg)
 
-Cardinal receives user input via the device's microphone, and transforms the speech to text using the Microsoft Azure 
-Cognitive Services Platform. With the sample sentences we have trained, Cardinal can detect the intent of a message -
+Cardinal receives user input via the device's microphone, and transforms the _speech to text_ using the __Microsoft Azure 
+Cognitive Services Platform__. With the sample sentences we have trained, Cardinal can detect the intent of a message -
 the service being requested - and the entity to perform the service upon where relevant.
 
 After the service code is executed, the text output is then sent back to the Cognitive Services Platform to request a 
-text to speech result from the Azure. Cardinal downloads the response .wav and plays back the audio.
+_text to speech_ result from the Azure. Cardinal downloads the response .mp3 and plays back the audio.
 
 Cardinal has four primary features as a digital assistant:
 
@@ -74,8 +74,4 @@ User speaks: 'Search Wikipedia for Nelson Mandela?'
 ```
 
 
-This project was developed by Brennan McFarland and Emilio Lopez for HackOHI/O 2018. 
-
-
-## Notes
-Due to laziness, the source code on Github contains the password to one of Emilio's emails. That will be changed very promptly. 
+This project was developed by Brennan McFarland and Emilio Lopez for HackOHI/O 2018.  
