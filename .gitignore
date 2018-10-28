@@ -9,3 +9,4 @@ msspeechservices*
 api.ini
 SpeechRecognition*.json
 cardinal/__pycache__/
+luisauthoringkey
