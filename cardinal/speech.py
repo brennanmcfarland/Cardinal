@@ -34,7 +34,9 @@ def get_command():
     recording = [sum(r) / len(r) for r in recording]
     recording = resample(recording, 16000 * duration)
     recording = recording * 32767  # *32767 cause we're converting to an int16 range from -1 - +1
-    recording *= amplification
+    # perform peak amplitude normalization
+    peak_amplitude = np.max(recording)
+    recording = recording / peak_amplitude * 32767
     recording = np.clip(recording, -32768, 32767)
     recording = recording.astype('int16')
     print("Resampled Audio")
